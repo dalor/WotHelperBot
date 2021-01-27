@@ -1,0 +1,24 @@
+{
+  "name": "clan-updates",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cli-table3": "^0.6.0",
+    "discord-webhook-node": "^1.0.7",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "fastify": "^3.11.0",
+    "node-fetch": "^2.6.1",
+    "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "start": "node run.js",
+    "dev": "nodemon -r dotenv/config run.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

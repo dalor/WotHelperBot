@@ -1,0 +1,1 @@
+Promise.all([require('./bot')(), require('./web')()]) 
