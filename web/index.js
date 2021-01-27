@@ -23,11 +23,4 @@ fastify.get('/auth/:user_id', async (request, reply) => {
 })
 
 
-module.exports = async () => fastify.listen(process.env.PORT || 8080,
-    (err, address) => {
-        if (err) {
-            fastify.log.error(err)
-            process.exit(1)
-        }
-        fastify.log.info(`server listening on ${address}`)
-    })
+module.exports = async () => fastify.listen(process.env.PORT || 8080, "0.0.0.0")
