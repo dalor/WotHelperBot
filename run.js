@@ -1,1 +1,1 @@
-Promise.all([require('./bot')(), require('./web')()]) 
+Promise.all([require('./runBot'), require('./runWeb')]) 

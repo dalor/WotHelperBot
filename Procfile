@@ -1,1 +1,1 @@
-worker: node run.js
+worker: node runBot.js

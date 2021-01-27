@@ -16,7 +16,7 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "start": "node run.js",
+    "start": "node runWeb.js",
     "dev": "nodemon -r dotenv/config run.js"
   },
   "author": "",
