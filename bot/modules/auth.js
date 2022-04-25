@@ -3,7 +3,7 @@ module.exports = (client, { redis, api, siteUrl }) => {
     client.command(/auth (.+)/, async message => {
         const nickname = message.match[1]
         await redis.update(message.user(), { nickname })
-        message.channel.send(api.authUrl(`${siteUrl}auth/${message.user()}`))
+        message.channel.send(api.authUrl(`${siteUrl}/auth/${message.user()}`))
     })
 
     client.command(/prolongate/, async message => {

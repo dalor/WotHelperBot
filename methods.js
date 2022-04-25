@@ -24,6 +24,9 @@ const accountInfo = (data) => get('/account/info', data)
 
 const clanInfo = (data) => get('/clans/info', data)
 
+const clanReserves = (data) => get('/stronghold/clanreserves', data)
+
+const activateClanReserve = (data) => post('/stronghold/activateclanreserve', data)
 
 module.exports = (application_id) => {
 
@@ -88,7 +91,24 @@ module.exports = (application_id) => {
 
         getOnlineMembers,
 
-        getUsersClanOnlineMembers: (account_id, access_token) => getClanId(account_id).then(clan_id => getOnlineMembers(clan_id, access_token))
+        getUsersClanOnlineMembers: (account_id, access_token) => getClanId(account_id).then(clan_id => getOnlineMembers(clan_id, access_token)),
+
+        activateClanReserve: (access_token, reserve_level, reserve_type) => activateClanReserve({
+            application_id,
+            access_token,
+            reserve_level,
+            reserve_type
+        }).then(data => data.data),
+
+        clanReserves: (access_token) => clanReserves({
+            application_id,
+            access_token
+        }).then(data => data.data),
+
+        clanInfo: (clan_id) => clanInfo({
+            application_id,
+            clan_id
+        }).then(data => data.data?.[clan_id]),
 
     }
 }

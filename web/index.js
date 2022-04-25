@@ -1,4 +1,5 @@
 const { application_id } = require('../config')
+const { registerFastifyWebhook } = require('../telegram')
 const api = require('../methods')(application_id)
 
 const redis = require('../redis')
@@ -22,5 +23,6 @@ fastify.get('/auth/:user_id', async (request, reply) => {
     return { ok: false }
 })
 
+registerFastifyWebhook(fastify)
 
 module.exports = async () => fastify.listen(process.env.PORT || 8080, "0.0.0.0")

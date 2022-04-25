@@ -3,5 +3,6 @@ module.exports = {
     prefix: '\\',
     siteUrl: process.env.SITE_URL,
     application_id: process.env.APPLICATION_ID,
-    redisUrl: process.env.REDIS_URL
+    redisUrl: process.env.REDIS_URL,
+    telegramToken: process.env.TELEGRAM_TOKEN
 }
