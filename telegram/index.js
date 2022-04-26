@@ -1,9 +1,13 @@
 const { Telegraf } = require('telegraf')
-const config = require('../config');
+const telegrafPlugin = require('fastify-telegraf')
 const fs = require('fs')
+
+const config = require('../config');
+
 const methods = require('../methods')
 const redis = require('../redis')
-const telegrafPlugin = require('fastify-telegraf')
+
+const utils = require('./utils')
 
 const bot = new Telegraf(config.telegramToken)
 
@@ -41,10 +45,13 @@ bot.use(async (ctx, next) => {
 
 const modulesFiles = fs.readdirSync('./telegram/modules').filter(file => file.endsWith('.js'));
 
+const api = methods(config.application_id)
+
 const newConfig = {
     ...config,
-    api: methods(config.application_id),
-    redis
+    api,
+    redis,
+    utils: utils(api)
 }
 
 for (const file of modulesFiles) {

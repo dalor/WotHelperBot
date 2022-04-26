@@ -61,6 +61,12 @@ module.exports = (application_id) => {
             tank_id: tank_id ? tank_id.join(',') : undefined
         }).then((data) => data.data && Object.values(data.data))
 
+    const getClanInfo = (clan_id) =>
+        clanInfo({
+            application_id,
+            clan_id
+        }).then(data => data.data?.[clan_id])
+
     return {
 
         authUrl: (redirect_uri) => authUrl({
@@ -105,10 +111,9 @@ module.exports = (application_id) => {
             access_token
         }).then(data => data.data),
 
-        clanInfo: (clan_id) => clanInfo({
-            application_id,
-            clan_id
-        }).then(data => data.data?.[clan_id]),
+        getClanInfo,
+
+        getUsersClanInfo: (account_id) => getClanId(account_id).then(getClanInfo)
 
     }
 }
