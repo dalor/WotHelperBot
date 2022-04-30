@@ -64,6 +64,7 @@ for (const file of modulesFiles) {
 process.once('SIGINT', () => bot.stop('SIGINT'))
 process.once('SIGTERM', () => bot.stop('SIGTERM'))
 
+bot.catch(console.error)
 
 module.exports = {
     bot,
